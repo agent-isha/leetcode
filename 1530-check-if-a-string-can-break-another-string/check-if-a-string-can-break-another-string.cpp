@@ -9,11 +9,13 @@ public:
         for(int i=0;i<s1.size();i++){
             if(s1[i]<s2[i]){
                 a+=1;
+                break;
             }
         }
         for(int i=0;i<s1.size();i++){
             if(s2[i]<s1[i]){
                 b+=1;
+                break;
             }
         }
         if(a==0||b==0){
