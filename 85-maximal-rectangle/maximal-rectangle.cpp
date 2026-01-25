@@ -1,6 +1,6 @@
 class Solution {
 public:
-    // Histogram function MUST be separate
+    
     int largestRectangleArea(vector<int>& heights) {
         int n = heights.size();
         stack<int> st;
