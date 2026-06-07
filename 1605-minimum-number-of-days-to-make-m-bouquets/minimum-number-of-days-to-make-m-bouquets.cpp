@@ -36,9 +36,9 @@ public:
 
             if (canMake(bloomDay, m, k, mid)) {
                 ans = mid;
-                hi = mid - 1;   // try smaller day
+                hi = mid - 1;   
             } else {
-                lo = mid + 1;   // need more days
+                lo = mid + 1;   
             }
         }
 
