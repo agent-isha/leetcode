@@ -1,60 +1,56 @@
 class Solution {
 public:
-    void solve(string op,string ip,unordered_map<char,string>&mp,vector<string>&ans){
-        if(ip.empty()){
+    void solve(unordered_map<int,string>&m,string digits,string op,vector<string>&ans){
+        if(digits.size()==0){
             ans.push_back(op);
             return;
         }
-        char a=ip[0];
-        string b=mp[a];
-        if(b.size()==3){
+        int present=digits[0]-'0';
+        digits.erase(0,1);
+        string a=m[present];
+        if(present!=7 && present!=9){
             string op1=op;
             string op2=op;
             string op3=op;
-            op1+=b[0];
-            op2+=b[1];
-            op3+=b[2];
-            ip.erase(ip.begin()+0);
-            solve(op1,ip,mp,ans);
-            solve(op2,ip,mp,ans);
-            solve(op3,ip,mp,ans);
+            op1+=a[0];
+            solve(m,digits,op1,ans);
+            op2+=a[1];
+            solve(m,digits,op2,ans);
+            op3+=a[2];
+            solve(m,digits,op3,ans);
 
         }else{
             string op1=op;
             string op2=op;
             string op3=op;
             string op4=op;
-            op1+=b[0];
-            op2+=b[1];
-            op3+=b[2];
-            op4+=b[3];
-            ip.erase(ip.begin()+0);
-            solve(op1,ip,mp,ans);
-            solve(op2,ip,mp,ans);
-            solve(op3,ip,mp,ans);
-            solve(op4,ip,mp,ans);
-
+            op1+=a[0];
+            solve(m,digits,op1,ans);
+            op2+=a[1];
+            solve(m,digits,op2,ans);
+            op3+=a[2];
+            solve(m,digits,op3,ans);
+            op4+=a[3];
+            solve(m,digits,op4,ans);
 
         }
-        
+
+
     }
     vector<string> letterCombinations(string digits) {
-        string ip=digits;
+        unordered_map<int,string>m;
+        m[2]="abc";
+        m[3]="def";
+        m[4]="ghi";
+        m[5]="jkl";
+        m[6]="mno";
+        m[7]="pqrs";
+        m[8]="tuv";
+        m[9]="wxyz";
         vector<string>ans;
         string op;
-        unordered_map<char, string> mp = {
-        {'2', "abc"},
-        {'3', "def"},
-        {'4', "ghi"},
-        {'5', "jkl"},
-        {'6', "mno"},
-        {'7', "pqrs"},
-        {'8', "tuv"},
-        {'9', "wxyz"}
-        };
-        solve(op,ip,mp,ans);
+        solve(m,digits,op,ans);
         return ans;
-
 
         
     }
