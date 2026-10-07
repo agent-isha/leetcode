@@ -6,7 +6,7 @@ FROM (
         e.name AS Employee,
         e.salary AS Salary,
         DENSE_RANK() OVER (
-            PARTITION BY d.name 
+            PARTITION BY e.departmentId 
             ORDER BY e.salary DESC
         ) AS ranks
     FROM Employee e
